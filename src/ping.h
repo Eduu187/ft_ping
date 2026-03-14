@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <getopt.h>
+#include <stdlib.h>
 
 typedef struct  s_args {
     // Obrigatórios 
@@ -23,4 +24,5 @@ typedef struct  s_args {
     char    *destination;   // O Hostname ou IP fornecido pelo usuário 
 }               t_args;
 
-int parse(int argc, char** argv);
+int parse(int argc, char** argv, t_args *args);
+void usage(void);

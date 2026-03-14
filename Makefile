@@ -6,7 +6,8 @@ SRC_DIR     = src/
 OBJ_DIR     = obj/
 
 FILES       = main.c \
-              parse.c
+              parse.c \
+			  messages.c
 
 SRCS        = $(addprefix $(SRC_DIR), $(FILES))
 OBJS        = $(addprefix $(OBJ_DIR), $(FILES:.c=.o))
