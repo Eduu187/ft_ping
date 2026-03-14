@@ -4,9 +4,9 @@
 #include "ping.h"
 
 int parse(int argc, char** argv){
-    if(argc < 2){
+    if(argc < 2 || argv == NULL){
         printf("ping: usage error: Destination address required\n");
         return(1);
     }
-
+    return(0);
 }
