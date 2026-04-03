@@ -7,7 +7,10 @@ OBJ_DIR     = obj/
 
 FILES       = main.c \
               parse.c \
-			  messages.c
+			  messages.c \
+			  hostname.c \
+			  rawsocket.c \
+			  icmp.c \
 
 SRCS        = $(addprefix $(SRC_DIR), $(FILES))
 OBJS        = $(addprefix $(OBJ_DIR), $(FILES:.c=.o))
@@ -37,4 +40,8 @@ re: fclean all
 
 c: all clean
 
-.PHONY: all clean fclean re c
+test: all
+	@chmod +x tests.sh
+	@./tests.sh
+
+.PHONY: all clean fclean re c test

@@ -24,9 +24,11 @@ int parse(int argc, char** argv, t_args *args) {
             case 'a': args->audible = 1; break;
             case 't': args->ttl = atoi(optarg); break;   
             case '?': 
+                usage();
+                return (0);
             default:
                 usage();
-                return (2);
+                return (1);
         }
     }
     
