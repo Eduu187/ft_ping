@@ -137,7 +137,7 @@ int ping_loop(int sock, struct sockaddr_in *dest_addr, t_args *args, t_ping_stat
     struct timeval tv_start, tv_now;
     double rtt;
     
-    extern int g_interrupted;
+    extern t_global_state g_state;
     
     stats->packets_sent = 0;
     stats->packets_received = 0;
@@ -149,7 +149,7 @@ int ping_loop(int sock, struct sockaddr_in *dest_addr, t_args *args, t_ping_stat
     gettimeofday(&tv_start, NULL);
     
     for (int i = 0; i < max_count; i++) {
-        if (g_interrupted)
+        if (g_state.interrupted)
             break;
         
         if (args->deadline > 0) {

@@ -1,13 +1,10 @@
 #include "ping.h"
 
-int g_sock = -1;
-t_ping_stats *g_stats = NULL;
-char *g_hostname = NULL;
-int g_interrupted = 0;
+t_global_state g_state = {-1, NULL, NULL, 0};
 
 void signal_handler(int sig) {
     (void)sig;
-    g_interrupted = 1;
+    g_state.interrupted = 1;
 }
 
 void init_args(t_args *args) {
@@ -43,9 +40,9 @@ int ft_ping(int argc, char **argv){
         (sock = setup_raw_socket(&args)) < 0)
         return (1);
     signal(SIGINT, signal_handler);
-    g_sock = sock;
-    g_stats = &stats;
-    g_hostname = args.destination;
+    g_state.sock = sock;
+    g_state.stats = &stats;
+    g_state.hostname = args.destination;
     
     printf("PING %s (%s): %d data bytes\n", args.destination, ip_str, args.packet_size);
     

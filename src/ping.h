@@ -43,6 +43,13 @@ typedef struct s_ping_stats {
     double  total_rtt;
 }               t_ping_stats;
 
+typedef struct s_global_state {
+    int             sock;
+    t_ping_stats    *stats;
+    char            *hostname;
+    int             interrupted;
+}               t_global_state;
+
 typedef struct s_icmp_echo {
     struct icmphdr hdr;
     struct timeval tv;
